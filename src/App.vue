@@ -3,7 +3,7 @@
   <div id="app">
     <el-container>
 
-      <Aside></Aside>
+      <Aside v-if="!isLogin"></Aside>
 
 
       <el-main>
@@ -22,7 +22,14 @@ export default {
   name: "App",
   components: {
     Aside
-  }
+  },
+  computed: {
+    isLogin() {
+      return this.$route.path === '/login'
+    }
+  },
+
+
 }
 </script>
 
