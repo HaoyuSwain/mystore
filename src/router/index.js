@@ -26,6 +26,7 @@ router.beforeEach(((to, from, next) => {
                     const element = menuRoute[i];
                     router.addRoute(element)
                 }
+                store.dispatch('menuRoute/setMenuRoutes', routes.concat(menuRoute))
                 isChange = true
                 return next()
             }
