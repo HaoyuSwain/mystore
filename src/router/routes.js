@@ -5,14 +5,24 @@ import Login from '@/views/Login'
 export default [
     {
         path: '/',
-        component: Home
+        name: 'Home',
+        component: Home,
+        meta: {
+            title: '首页'
+        },
+        children: [{
+            name: 'Shop',
+            path: '/shop',
+            component: Shop
+        }]
     },
-    {
-        path: '/shop',
-        component: Shop
-    },
+
     {
         path: '/login',
-        component: Login
+        component: Login,
+        meta: {
+            title: '登录',
+        }
+
     }
 ]
