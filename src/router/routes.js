@@ -13,7 +13,10 @@ export default [
         children: [{
             name: 'Shop',
             path: '/shop',
-            component: Shop
+            component: Shop,
+            meta: {
+                title: '统计'
+            }
         }]
     },
 

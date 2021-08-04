@@ -6,12 +6,17 @@ export default {
     mutations: {
         setMenuRoute(state, payload) {
             state.menuRoute = payload
+        },
+        getMenuRoute(state) {
+            return state.menuRoute
         }
     },
     actions: {
         setMenuRoutes(ctx, payload) {
-            console.log('actions')
             ctx.commit('setMenuRoute', payload)
+        },
+        getMenuRoutes(ctx) {
+            ctx.commit('getMenuRoute')
         }
     }
 }

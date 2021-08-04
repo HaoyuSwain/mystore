@@ -1,5 +1,7 @@
 <template>
-  <h1>shop</h1>
+  <div class="">
+    haoyuswain@163.comhaoyuswain@163.comhaoyuswain@163.comhaoyuswain@163.com
+  </div>
 </template>
 
 <script>

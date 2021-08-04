@@ -19,14 +19,13 @@ router.beforeEach(((to, from, next) => {
     if (to.path !== '/login') {
         if (store.state.login.user.appkey && store.state.login.user.username &&
             store.state.login.user.email && store.state.login.user.role) {
-            console.log(store.state.login.user.role, product)
             if (!isChange) {
-                const menuRoute = getMenuRoute(store.state.login.user.role, product)
-                for (let i = 0; i < menuRoute.length; i++) {
-                    const element = menuRoute[i];
+                const resultMenu = getMenuRoute(store.state.login.user.role, product)
+                for (let i = 0; i < resultMenu.length; i++) {
+                    const element = resultMenu[i];
                     router.addRoute(element)
                 }
-                store.dispatch('menuRoute/setMenuRoutes', routes.concat(menuRoute))
+                store.dispatch('menuRoutes/setMenuRoutes', routes.concat(resultMenu))
                 isChange = true
                 return next()
             }

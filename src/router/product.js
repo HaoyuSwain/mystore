@@ -1,30 +1,42 @@
 export default [{
-    path: 'product',
+    path: '/product',
     name: 'Product',
     meta: {
         title: '商品'
     },
     component: () => import('@/views/Shop'),
-    children: [{
-        path: 'product/shoplist',
-        name: 'Shoplist',
-        meta: {
-            title: '商品列表'
+    children: [
+        {
+            path: '/product/shoplist',
+            name: 'Shoplist',
+            meta: {
+                title: '商品列表'
+            },
+            component: () => import('@/views/ShopList')
         },
-        component: () => import('@/views/ShopList')
-    }, {
-        path: 'product/addlist',
-        name: 'Addlist',
-        meta: {
-            title: '添加商品'
+        {
+            path: '/product/addlist',
+            name: 'Addlist',
+            meta: {
+                title: '添加商品'
+            },
+            component: () => import('@/views/AddList')
         },
-        component: () => import('@/views/AddList')
-    }, {
-        path: 'product/category',
-        name: 'Category',
-        meta: {
-            title: '商品类目',
+        {
+            path: '/edit/:id',
+            name: 'Productedit',
+            meta: {
+                title: '编辑商品'
+            },
+            component: () => import('@/views/ShopEdit')
         },
-        component: () => import('@/views/Category')
-    }]
+        {
+            path: '/product/category',
+            name: 'Category',
+            meta: {
+                title: '商品类目',
+            },
+            component: () => import('@/views/Category')
+        }
+    ]
 }]

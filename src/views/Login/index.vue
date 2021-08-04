@@ -63,7 +63,7 @@ export default {
         if (valid) {
           user.postLogin(this.loginForm).then(r => {
             this.$store.dispatch('login/setUserInfo', r)
-            this.$router.push({path: '/'})
+            this.$router.push('/')
           }).catch(err => {
                 this.$message.error({
                   message: err,
