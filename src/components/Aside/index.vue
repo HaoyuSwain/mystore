@@ -18,33 +18,16 @@
           </el-button>
         </div>
       </el-row>
-      <el-submenu index="1">
+      <el-submenu v-for="(item,i)  in menuRoute" :key="item.name" index="i">
         <template slot="title">
-          <i class="el-icon-s-home"></i>
-          <span slot="title">首页</span>
+          <i class="el-icon-location"></i>
+          <span slot="title"><router-link :to="{name:item.name}">{{ item.meta.title }}</router-link></span>
         </template>
-        <router-link to="/">
-          <el-menu-item index="1-1">
-            <i class="el-icon-s-home"></i>
-            <span slot="title">统计</span>
+        <el-menu-item-group>
+          <el-menu-item v-for="(child,k) in item.children" :index="`${i}-${k}`" :key="child.name">
+            <router-link :to="{name:child.name}" exact>{{ child.meta.title }}</router-link>
           </el-menu-item>
-        </router-link>
-      </el-submenu>
-      <el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-s-goods"></i>
-          <span slot="title">商品</span>
-        </template>
-        <router-link to="/shop">
-          <el-menu-item index="2-1">
-            <i class="el-icon-s-operation"></i>
-            <span slot="title">商品列表</span>
-          </el-menu-item>
-        </router-link>
-        <el-menu-item index="2-2">
-          <i class="el-icon-document-add"></i>
-          <span slot="title">新增商品</span>
-        </el-menu-item>
+        </el-menu-item-group>
       </el-submenu>
     </el-menu>
 
@@ -53,8 +36,13 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: "index",
+  computed: {
+    ...mapState('menuRoutes', ['menuRoute'])
+  },
   data() {
     return {
       isCollapse: true
@@ -73,7 +61,11 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath)
     }
+  },
+  created() {
+    this.$store.dispatch('menuRoutes/getMenuRoutes')
   }
+
 }
 </script>
 

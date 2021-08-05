@@ -6,23 +6,24 @@ export default [
     {
         path: '/',
         name: 'Home',
-        component: Home,
+        component: {render: (e) => e("router-view")},
         meta: {
             title: '首页'
         },
         children: [{
             name: 'Shop',
             path: '/shop',
-            component: Shop
+            component: Shop,
+            meta: {
+                title: '统计'
+            }
         }]
     },
-
     {
         path: '/login',
         component: Login,
         meta: {
             title: '登录',
         }
-
     }
 ]

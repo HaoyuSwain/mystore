@@ -2,12 +2,10 @@
 
   <div id="app">
     <el-container>
-
       <Aside v-if="!isLogin"></Aside>
-
-
       <el-main>
-        <router-view></router-view>
+        <router-view>
+        </router-view>
 
       </el-main>
     </el-container>

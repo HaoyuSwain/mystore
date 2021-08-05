@@ -2,21 +2,21 @@
  *储存角色对应的名称
  */
 const roleToRoute = {
-    'coustomer': [{
-        name: 'product',
+    coustomer: [{
+        name: 'Product',
     }, {
-        name: 'shoplist'
+        name: 'Shoplist'
     }, {
-        name: 'addlist'
+        name: 'Addlist'
     }],
-    'admin': [{
-        name: 'product',
+    admin: [{
+        name: 'Product',
     }, {
-        name: 'shoplist'
+        name: 'Shoplist'
     }, {
-        name: 'addlist'
+        name: 'Addlist'
     }, {
-        name: 'category'
+        name: 'Category'
     }],
 }
 
@@ -26,17 +26,18 @@ const roleToRoute = {
  * @param {String}role
  * @param {Array}routes
  */
-export default function getMenuRoute(role, routes) {
-    const allowedRouteName = roleToRoute[role].map(r => r.name)
-    return routes.filter(r => {
-        if (allowedRouteName.indexOf(r.name) !== -1) {
-            const children = r.children
-            r.children = children.filter(res => allowedRouteName.indexOf(res.name) !== -1)
-            return true
-        } else {
-            return false
+export default function (role, routes) {
+    console.log(role, routes);
+    const allowRoutesName = roleToRoute[role].map((item) => item.name);
+    return routes.filter((r) => {
+        const obj = r;
+        if (allowRoutesName.indexOf(r.name) !== -1) {
+            const {children} = obj;
+            obj.children = children.filter((c) => allowRoutesName.indexOf(c.name) !== -1);
+            return true;
         }
-    })
+        return false;
+    });
 }
 
 
