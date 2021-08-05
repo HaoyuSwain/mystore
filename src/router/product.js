@@ -1,10 +1,17 @@
+import ShopList from '@/views/ShopList'
+import AddList from '@/views/AddList'
+import ShopEdit from '@/views/ShopEdit'
+import Shop from '@/views/Shop'
+import Category from '@/views/Category'
+
+
 export default [{
     path: '/product',
     name: 'Product',
     meta: {
         title: '商品'
     },
-    component: () => import('@/views/Shop'),
+    component: Shop,
     children: [
         {
             path: '/product/shoplist',
@@ -12,7 +19,7 @@ export default [{
             meta: {
                 title: '商品列表'
             },
-            component: () => import('@/views/ShopList')
+            component: ShopList
         },
         {
             path: '/product/addlist',
@@ -20,7 +27,7 @@ export default [{
             meta: {
                 title: '添加商品'
             },
-            component: () => import('@/views/AddList')
+            component: AddList
         },
         {
             path: '/edit/:id',
@@ -28,7 +35,7 @@ export default [{
             meta: {
                 title: '编辑商品'
             },
-            component: () => import('@/views/ShopEdit')
+            component: ShopEdit
         },
         {
             path: '/product/category',
@@ -36,7 +43,7 @@ export default [{
             meta: {
                 title: '商品类目',
             },
-            component: () => import('@/views/Category')
+            component: Category
         }
     ]
 }]

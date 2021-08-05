@@ -21,11 +21,11 @@
       <el-submenu v-for="(item,i)  in menuRoute" :key="item.name" index="i">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span slot="title">{{ item.meta.title }}</span>
+          <span slot="title"><router-link :to="{name:item.name}">{{ item.meta.title }}</router-link></span>
         </template>
         <el-menu-item-group>
           <el-menu-item v-for="(child,k) in item.children" :index="`${i}-${k}`" :key="child.name">
-            {{ child.meta.title }}
+            <router-link :to="{name:child.name}" exact>{{ child.meta.title }}</router-link>
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>

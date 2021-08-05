@@ -17,21 +17,21 @@ const router = new VueRouter({
 let isChange = false
 router.beforeEach(((to, from, next) => {
     if (to.path !== '/login') {
-        if (store.state.login.user.appkey && store.state.login.user.username &&
-            store.state.login.user.email && store.state.login.user.role) {
+        if (store.state.login.user.appkey && store.state.login.user.username && store.state.login.user.role) {
             if (!isChange) {
+                console.log(product)
                 const resultMenu = getMenuRoute(store.state.login.user.role, product)
-                for (let i = 0; i < resultMenu.length; i++) {
-                    const element = resultMenu[i];
-                    router.addRoute(element)
-                }
-                store.dispatch('menuRoutes/setMenuRoutes', routes.concat(resultMenu))
+
+                store.dispatch('menuRoutes/setMenuRoutes', routes.concat(resultMenu)).then(() => {
+                    router.addRoutes(resultMenu);
+                    next();
+                });
                 isChange = true
-                return next()
             }
-        } else {
-            return next('/login')
+            return next()
         }
+        return next('/login')
+
     }
     return next()
 

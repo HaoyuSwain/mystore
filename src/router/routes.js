@@ -6,7 +6,7 @@ export default [
     {
         path: '/',
         name: 'Home',
-        component: Home,
+        component: {render: (e) => e("router-view")},
         meta: {
             title: '首页'
         },
@@ -19,13 +19,11 @@ export default [
             }
         }]
     },
-
     {
         path: '/login',
         component: Login,
         meta: {
             title: '登录',
         }
-
     }
 ]
